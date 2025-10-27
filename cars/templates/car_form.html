@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters  %}
+
+{% block content %}
+<!--<h2>-->
+<!--    {% if object %}-->
+<!--        Edit Car-->
+<!--    {% else %}-->
+<!--        Add New Car-->
+<!--    {% endif %}-->
+<!--</h2>-->
+<form method="post" class="mt-5 w-50"  enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class="btn btn-primary">Save</button>
+    <a href="{% url 'cars:car_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

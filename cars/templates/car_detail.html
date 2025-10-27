@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ car.brand }} {{ car.name }}</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        {% if car.image %}
+            <img src="media/car_images/{{ car.image }}" class="img-fluid" alt="{{ car.name }}">
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <p><strong>Make:</strong> {{ car.car_make }}</p>
+        <p><strong>Model:</strong> {{ car.car_model }}</p>
+        <p><strong>Type:</strong> {{ car.car_type.name }}</p>
+        <p><strong>Year:</strong> {{ car.model_year }}</p>
+        <p><strong>Registration:</strong> {{ car.registration_number }}</p>
+        <p><strong>Price per day:</strong> ${{ car.price_per_day }}</p>
+        <p><strong>Added by:</strong> {{ car.added_by.phone_number }}</p>
+        <p>{{ car.description }}</p>
+
+        {% if user.is_authenticated %}
+            {% if car.added_by == user %}
+                <a href="{% url 'cars:car_edit' car.pk %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'cars:car_delete' car.pk %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+
+            {% if car.is_available %}
+                <form method="post" action="{% url 'cars:car_rent' car.pk %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label>Start Date:</label>
+                        <input type="date" name="start_date" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>End Date:</label>
+                        <input type="date" name="end_date" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Rent This Car</button>
+                </form>
+            {% else %}
+                <p class="text-danger">Currently unavailable.</p>
+            {% endif %}
+        {% else %}
+            <p>Please <a href="{% url 'user:login' %}">login</a> to rent a car.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
