@@ -1,0 +1,24 @@
+
+
+.card-img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px !important;
+    object-fit: cover;
+    object-position: center;
+}
+
+body {
+    background-color: rgb(125,243,255);
+}
+
+.detail-page-img {
+    width: 40vw
+}

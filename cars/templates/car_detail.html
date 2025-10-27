@@ -3,9 +3,9 @@
 <h2>{{ car.brand }} {{ car.name }}</h2>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 ">
         {% if car.image %}
-            <img src="media/car_images/{{ car.image }}" class="img-fluid" alt="{{ car.name }}">
+            <img src="{{ car.image.url }}" class="img-fluid detail-page-img" alt="{{ car.name }}">
         {% endif %}
     </div>
     <div class="col-md-6">
@@ -15,8 +15,9 @@
         <p><strong>Year:</strong> {{ car.model_year }}</p>
         <p><strong>Registration:</strong> {{ car.registration_number }}</p>
         <p><strong>Price per day:</strong> ${{ car.price_per_day }}</p>
-        <p><strong>Added by:</strong> {{ car.added_by.phone_number }}</p>
-        <p>{{ car.description }}</p>
+        <p><strong>Owners mobile phone:</strong> {{ car.added_by.phone_number }}</p>
+        <p>Description:
+            {{ car.description }}</p>
 
         {% if user.is_authenticated %}
             {% if car.added_by == user %}

@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="445e9e45-3410-447c-9e67-eeec83a66613" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/django-car-rental.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/car_rental/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/car_rental/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/car_rental/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/car_rental/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars/templates/car_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/cars/templates/car_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars/templates/car_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/cars/templates/car_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

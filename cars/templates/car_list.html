@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
+
+
+
 {% block content %}
 <h2 class="mt-5">Available Cars</h2>
 
 <div class="row">
     {% for car in cars %}
     <div class="col col-md-4 mb-3">
-        <div class="card h-100">
+        <div class="card h-100 shadow-sm" style="width: 300px;">
             {% if car.image %}
-                <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.car_make }}">
+                <div class="card-img-container">
+                    <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.car_make }}">
+                </div>
             {% else %}
-                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No image">
+                <div class="card-img-container">
+                    <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No image">
+                </div>
             {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ car.car_make }} {{ car.car_model }}</h5>
@@ -18,12 +25,11 @@
                     Year: {{ car.model_year }}<br>
                     Price per day: ${{ car.price_per_day }}
                 </p>
-                <a href="{% url 'cars:car_detail' car.pk %}" class="btn btn-primary">View Details</a>
+                <a href="{% url 'cars:car_detail' car.pk %}" class="btn btn-primary w-100">View Details</a>
             </div>
         </div>
     </div>
-
-
     {% endfor %}
 </div>
+
 {% endblock %}
