@@ -2,12 +2,54 @@
 {% block content %}
 <h2>{{ car.brand }} {{ car.name }}</h2>
 
+{% if messages %}
+  <div class="alert " role="alert">
+    {% for message in messages %}
+      <div class="alert alert-warning ">
+        {{ message }}
+        <button onclick="this.parentElement.style.display='none'">OK</button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
 <div class="row">
     <div class="col-md-6 ">
-        {% if car.image %}
-            <img src="{{ car.image.url }}" class="img-fluid detail-page-img" alt="{{ car.name }}">
-        {% endif %}
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+              {%if car.image %}
+            <div class="carousel-item active">
+              <img src="{{ car.image.url }}" class="d-block w-100" alt="...">
+            </div>
+              {% endif %}
+              {%if car.image2 %}
+            <div class="carousel-item">
+              <img src="{{ car.image2.url }}" class="d-block w-100" alt="...">
+            </div>
+              {% endif %}
+              {%if car.image3 %}
+            <div class="carousel-item">
+              <img src="{{ car.image3.url }}" class="d-block w-100" alt="...">
+            </div>
+              {% endif %}
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
     </div>
+
+
     <div class="col-md-6">
         <p><strong>Make:</strong> {{ car.car_make }}</p>
         <p><strong>Model:</strong> {{ car.car_model }}</p>

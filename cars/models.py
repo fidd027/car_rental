@@ -2,6 +2,7 @@
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
+from datetime import datetime
 from django.utils import timezone
 
 
@@ -20,15 +21,70 @@ class CarType(models.Model):
 
 
 class Car(models.Model):
-    """Model representing a car in the rental system."""
+
+
+    TRANSMISSION_CHOICES = [
+        ('automatic', 'Automatic'),
+        ('manual', 'Manual'),
+        ('CVT', 'cvt'),
+    ]
+
+    CAPACITY_CHOICES = [
+        ('2', 2),
+        ('4', 4),
+        ('5', 5),
+        ('7', 7),
+        ('8 and more', 8)
+    ]
+
+    LOCATION_CHOICES = [
+        ('Tbilisi', 'Tbilisi'),
+        ('Kutaisi', 'Kutaisi'),
+        ('Batumi', 'Batumi'),
+        ('Rustavi', 'Rustavi'),
+        ('Dmanisi', 'Dmanisi'),
+
+    ]
+
+    CAR_MAKE_CHOICES = [
+        ('toyota', 'Toyota'),
+        ('honda', 'Honda'),
+        ('ford', 'Ford'),
+        ('chevrolet', 'Chevrolet'),
+        ('Nissan', 'nissan'),
+        ('volkswagen', 'Volkswagen'),
+        ('bmw', 'BMW'),
+        ('mercedes', 'Mercedes-Benz'),
+        ('Audi', 'Audi'),
+        ('hyundai', 'Hyundai'),
+        ('kia', 'Kia'),
+        ('mazda', 'Mazda'),
+        ('subaru', 'Subaru'),
+        ('tesla', 'Tesla'),
+        ('jeep', 'Jeep'),
+        ('land_rover', 'Land Rover'),
+        ('volvo', 'Volvo'),
+        ('Porsche', 'porsche'),
+        ('Lexus', 'lexus'),
+        ('rolls-royce', 'Rolls-Royce'),
+    ]
+
+    CURRENT_YEAR = datetime.now().year
+    YEAR_CHOICES = [(year, str(year)) for year in range(1990, CURRENT_YEAR + 1)]
+
     car_type = models.ForeignKey(CarType, on_delete=models.SET_NULL, null=True, related_name="cars")
-    car_make = models.CharField(max_length=150)
+    car_make = models.CharField(choices=CAR_MAKE_CHOICES, max_length=20, )
     car_model = models.CharField(max_length=100)
-    model_year = models.PositiveIntegerField()
+    model_year = models.PositiveIntegerField(choices=YEAR_CHOICES, default=CURRENT_YEAR)
     registration_number = models.CharField(max_length=50, unique=True)
+    car_capacity = models.CharField(choices=CAPACITY_CHOICES, default='5', max_length=15)
+    transmission = models.CharField(choices=TRANSMISSION_CHOICES, max_length=10, default='Automatic')
+    location = models.CharField(choices=LOCATION_CHOICES, max_length=10, default='Tbilisi')
     price_per_day = models.DecimalField(max_digits=10, decimal_places=2)
     is_available = models.BooleanField(default=True)
     image = models.ImageField(upload_to='car_images/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='car_images/', blank=True, null=True)
+    image3 = models.ImageField(upload_to='car_images/', blank=True, null=True)
     description = models.TextField(blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
     added_by = models.ForeignKey(

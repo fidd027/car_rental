@@ -4,69 +4,11 @@
 
 {% block content %}
 
-<h2 class="mt-5">Available Cars</h2>
+<p><strong>User Phone Number:</strong> {{ user.phone_number }}</p>
+<p><strong>User Email:</strong> {{ user.email }}</p>
 
 
-
-<!-- Filter Bar -->
-<form method="get" class="container-md  p-3 filter-class text-white  mb-4 ">
-  <div class=" row g-3 filter-class-1 align-items-start mb-0">
-    <div class="col-md-2 col-sm-6 mt-5">
-      <label for="id_car_make" class="form-label">Make</label>
-      {{ filter.form.car_make }}
-    </div>
-
-      <div class="col-md-2 col-sm-6 mt-5">
-      <label for="id_car_type" class="form-label">Body Type</label>
-      {{ filter.form.car_type }}
-    </div>
-
-    <div class="col-md-2 col-sm-6 mt-5">
-      <label for="id_transmission" class="form-label">Transmission</label>
-      {{ filter.form.transmission }}
-    </div>
-
-    <div class="col-md-2 col-sm-6 mt-5">
-      <label for="id_car_capacity" class="form-label ">Seats</label>
-      {{ filter.form.car_capacity }}
-    </div>
-
-      <div class="col-md-2 col-sm-6 mt-5">
-      <label for="id_is_available" class="form-label ">Available</label>
-      {{ filter.form.is_available }}
-    </div>
-
-    <div class="col-md-2 col-sm-6 mt-5">
-      <label for="year-slider" class="form-label mb-5 ">Model Year Range</label>
-      <div id="year-slider" class="mt-2"></div>
-      <div class="d-flex justify-content-between mt-2">
-        <span id="year-min-display"></span>
-        <span id="year-max-display"></span>
-      </div>
-        <input type="hidden" name="model_year_min" id="year_min" />
-        <input type="hidden" name="model_year_max" id="year_max" />
-    </div>
-
-  </div>
-    <div class="row ">
-      <div class="col-md-2 col-sm-6 ">
-        <label for="filter-btn" class="form-label invisible">Filter</label>
-        <button id="filter-btn" type="submit" class="btn btn-primary align-self-start  w-100">Filter</button>
-    </div>
-
-    <div class="col-md-2 col-sm-6  ">
-        <label for="reset-btn" class="form-label invisible">Reset</label>
-        <a href="{% url 'cars:car_list' %}" class="btn btn-outline-secondary w-100">Reset</a>
-
-    </div>
-    </div>
-
-
-
-</form>
-
-
-
+<h2 class="mt-5">My Cars </h2>
 <div class="row mt-5">
     {% for car in cars %}
     <div class="col col-md-4 mb-5">
@@ -141,8 +83,8 @@
 
 </ul>
 
-
 {% endblock %}
+
 
 {% block extra_scripts %}
 <script>
@@ -183,4 +125,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 {% endblock %}
-

@@ -29,7 +29,7 @@
             </td>
             <td>
                 {% if not rental.returned %}
-                    <form method="post" action="{% url 'return_car' rental.pk %}">
+                    <form method="post" action="{% url 'cars:return_car' rental.pk %}">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-sm btn-success">Return Car</button>
                     </form>
